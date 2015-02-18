@@ -598,12 +598,16 @@ id 값에 해당하는 User 정보 받기
 
 	
 ###### Sample JSON Response
-	{
-	    "id": 2,
-	    "is_social_friend": false,
-	    "nickname": "V1MNKUVN",
-	    "type": 1
-	}
+{
+    "articles": 0,
+    "comments": 0,
+    "id": 2,
+    "image": "default_user.png",
+    "is_social_friend": false,
+    "nickname": "YDJW56AH",
+    "type": 9,
+    "unread_notification_count": 0
+}
 
 ###### Errors
 
