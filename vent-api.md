@@ -4,8 +4,10 @@
 
 ## 1. Concept
 
-#### Server url : http://210.122.7.84:8080
-#### Image base url : http://210.122.7.84:8080/static/img/
+#### Old Server url : http://210.122.7.84:8080
+#### Old Image base url : http://210.122.7.84:8080/static/img/
+#### New Server url : http://nitingale.cloudapp.net:8080 [%HOST%]
+#### Old Image base url : http://nitingale.cloudapp.net:8080/static/img/
 #### Test GCM project id : TBA
 
 ----------
@@ -80,7 +82,7 @@
 #### 인자는 limit, page 두 가지로 페이징 기능을 이용 가능.
 #### 페이징 인자가 없는 경우 기본값은 limit 5, page 1.
 ####### Example
-######## http://210.122.7.84:8080/articles 으로 GET 요청시
+######## http://nitingale.cloudapp.net:8080/articles 으로 GET 요청시
 ######## limit 인자가 5, page가 2인 경우, 6~10번째 값이 전달됨(offset, limit 기준 5,5가 됨)
 
 ----------
