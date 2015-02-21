@@ -8,6 +8,7 @@
 #### Old Image base url : http://210.122.7.84:8080/static/img/
 #### New Server url : http://nitingale.cloudapp.net:8080 [%HOST%]
 #### Old Image base url : http://nitingale.cloudapp.net:8080/static/img/
+
 #### Test GCM project id : TBA
 
 ----------
@@ -40,7 +41,9 @@
 	7. [GET - users/{id}/activites(특정 사용자의 활동 내역)](#user-get-id-activities)
 	8. [GET - users/me/activites(내 활동 내역)](#user-get-id-activities)
 	9. [GET - users/me/subscribes(내가 구독하는 카테고리, 사용자의 게시물)](#user-subscribes)
-	9. [GET - users/me/subscribes/categories(내가 구독하는 카테고리 목록)](#user-subscribes-categories)
+	9. [GET - users/me/subscribes/categories(내가 구독하는 카테고리 목록)](#user-subscribes-categories-list)
+	10. [POST - users/me/subscribes/categories/{category_id}(카테고리 구독)](#user-subscribe-category)
+	11. [DELETE - users/me/subscribes/categories/{category_id}(카테고리 구독 취소)](#user-unsubscribe-category)
 	10. [GET - users/me/subscribes/users(내가 구독하는 사용자 목록)](#user-subscribes-users)
 	11. [GET - users/me/subscribes/categories/articles(내가 구독하는 카테고리의 게시물)](#user-subscribes-categories-articles)
 	12. [GET - users/me/subscribes/users/articles(내가 구독하는 사용자의 게시물)](#user-subscribes-users-articles)
@@ -57,6 +60,7 @@
 	6. [POST - articles/{id}/comments(특정 글에 댓글 달기)](#article-post-id-comment)
 	7. [POST - articles/{id}/like(특정 글에 좋아요)](#article-post-id-like)
 	8. [DELETE - articles/{id}/like(특정 글에 좋아요 취소)](#article-delete-id-like)
+	9. [GET - articles/categories/{id}(특정 카테고리 글 목록)](#article-get-category-list)
 4. [Hashtag](#hashtag)
 	1. [GET - hashtags/(다중 해시태그 검색)](#hashtag-get)
 	2. [GET - hashtags/{tag}(특정 해시태그의 정보-사용된 글 목록)](#hashtag-get-tag)
@@ -606,8 +610,7 @@ id 값에 해당하는 User 정보 받기
         "is_social_friend": false,
         "nickname": "YDJW56AH",
         "type": 9,
-        "unread_notification_count": 0
-    }
+    }	
 
 ###### Errors
 
@@ -674,34 +677,6 @@ id 값에 해당하는 User 정보 받기
 * 200
 
 	
-###### Sample JSON Response
-	{
-	    "current_page": 1,
-	    "data": [
-	        {
-	            "body": "^ㅇ^ #^-^ #ㅋ_ㅋ",
-	            "color": null,
-	            "comments": 0,
-	            "created": "Sat, 06 Dec 2014 17:41:43 GMT",
-	            "id": 1,
-	            "image": "1083f7940fad1e820461aa94d0fc01458f13f0db.png",
-	            "likes": 0,
-	            "modified": "Sat, 06 Dec 2014 17:41:43 GMT",
-	            "user": {
-	                "id": 2,
-	                "is_social_friend": false,
-	                "nickname": "V1MNKUVN",
-	                "type": 1
-	            }
-	        }
-	    ],
-	    "has_next": false,
-	    "has_prev": false,
-	    "limit": 5,
-	    "total": 1,
-	    "total_page": 1
-	}
-
 ###### Errors
 
 | Status | Code | Message |
@@ -742,35 +717,6 @@ id 값에 해당하는 User 정보 받기
 
 * 200
 
-	
-###### Sample JSON Response
-	{
-	    "current_page": 1,
-	    "data": [
-	        {
-	            "article_id": 1,
-	            "body": "^ㅇ^ #^-^ #ㅋ_ㅋ",
-	            "color": null,
-	            "created": "Sat, 06 Dec 2014 17:43:08 GMT",
-	            "id": 1,
-	            "likes": 0,
-	            "modified": "Sat, 06 Dec 2014 17:43:08 GMT",
-	            "user": {
-	                "id": 2,
-	                "is_social_friend": false,
-	                "nickname": "V1MNKUVN",
-	                "type": 1
-	            }
-	        }
-	    ],
-	    "has_next": false,
-	    "has_prev": false,
-	    "limit": 10,
-	    "total": 1,
-	    "total_page": 1
-	}
-
-###### Errors
 
 | Status | Code | Message |
 |---|---|---|
@@ -909,7 +855,7 @@ id 값에 해당하는 User 정보 받기
 <br /><br />
 
 
-<a name="user-subscribes-categories"></a>
+<a name="user-subscribes-categories-list"></a>
 ### ``` GET ``` /users/{id}/subscribes/categories ``` user::view_user_me_subscribe_category_list ```
 
 ###### Description
@@ -928,6 +874,59 @@ id 값에 해당하는 User 정보 받기
 
 
 <br /><br />
+
+
+
+<a name="user-subscribe-category"></a>
+### ``` POST ``` /users/me/subscribes/categories/{category_id} ``` user::subscribe_category ```
+
+###### Description
+
+특정 카테고리 구독
+
+###### URL Structure
+
+`http://%HOST%/users/me/subscribes/categories/{category_id}`
+
+
+###### Parameters
+
+| Name | Required | Description |
+|---|---|---|
+
+
+###### Notes
+
+
+
+<br /><br />
+
+
+
+<a name="user-unsubscribe-category"></a>
+### ``` DELETE ``` /users/me/subscribes/categories/{category_id} ``` user::unsubscribe_category ```
+
+###### Description
+
+특정 카테고리 구독 취소
+
+###### URL Structure
+
+`http://%HOST%/users/me/subscribes/categories/{category_id}`
+
+
+###### Parameters
+
+| Name | Required | Description |
+|---|---|---|
+
+
+###### Notes
+
+
+
+<br /><br />
+
 
 
 <a name="user-subscribes-users"></a>
@@ -1020,6 +1019,9 @@ id 값에 해당하는 User 정보 받기
 |---|---|---|
 | **offset** | *Optional* | 자료 수 |
 | **page** | *Optional* | 페이지 번호 |
+| **up** | *Optional* | emotion이 이 값보다 큼 |
+| **down** | *Optional* | emotion이 이 값보다 작음 |
+| **eq** | *Optional* | emotion이 이 값과 동일 |
 
 ###### Response
 
@@ -1027,36 +1029,6 @@ id 값에 해당하는 User 정보 받기
 ###### HTTP Status
 
 * 200
-
-
-###### Sample JSON Response
-	{
-	    "current_page": 1,
-	    "data": [
-	        {
-	            "body": "^ㅇ^ #^-^ #ㅋ_ㅋ",
-	            "color": null,
-	            "comments": 0,
-	            "created": "Sat, 06 Dec 2014 18:30:31 GMT",
-	            "id": 4,
-	            "image": "91cd32d65343b9a5738431caeaebca0d1dd5f431.png",
-	            "likes": 0,
-	            "modified": "Sat, 06 Dec 2014 18:30:31 GMT",
-	            "type": 0,
-	            "user": {
-	                "id": 1,
-	                "is_social_friend": false,
-	                "nickname": "UM4GCDZF",
-	                "type": 1
-	            }
-	        }
-	    ],
-	    "has_next": false,
-	    "has_prev": false,
-	    "limit": 5,
-	    "total": 1,
-	    "total_page": 1
-	}
 
 
 ###### Errors
@@ -1097,25 +1069,6 @@ id 값에 해당하는 User 정보 받기
 
 * 200
 
-
-###### Sample JSON Response
-	{
-	    "body": "^ㅇ^ #^-^ #ㅋ_ㅋ",
-	    "color": null,
-	    "comments": 0,
-	    "created": "Sat, 06 Dec 2014 18:30:31 GMT",
-	    "id": 4,
-	    "image": "91cd32d65343b9a5738431caeaebca0d1dd5f431.png",
-	    "likes": 0,
-	    "modified": "Sat, 06 Dec 2014 18:30:31 GMT",
-	    "type": 0,
-	    "user": {
-	        "id": 1,
-	        "is_social_friend": false,
-	        "nickname": "UM4GCDZF",
-	        "type": 1
-	    }
-	}
 
 
 ###### Errors
@@ -1161,13 +1114,6 @@ id 값에 해당하는 User 정보 받기
 ###### HTTP Status
 
 * 201
-
-
-###### Sample JSON Response
-	{
-	    "id": 5,
-	    "result": true
-	}
 
 
 ###### Errors
@@ -1230,35 +1176,6 @@ id 값에 해당하는 User 정보 받기
 ###### HTTP Status
 
 * 200
-
-
-###### Sample JSON Response
-	{
-	    "current_page": 1,
-	    "data": [
-	        {
-	            "article_id": 4,
-	            "body": "^ㅇ^ #^-^ #ㅋ_ㅋ",
-	            "color": null,
-	            "created": "Sat, 06 Dec 2014 18:42:57 GMT",
-	            "id": 1,
-	            "likes": 0,
-	            "modified": "Sat, 06 Dec 2014 18:42:57 GMT",
-	            "type": 0,
-	            "user": {
-	                "id": 1,
-	                "is_social_friend": false,
-	                "nickname": "UM4GCDZF",
-	                "type": 1
-	            }
-	        }
-	    ],
-	    "has_next": false,
-	    "has_prev": false,
-	    "limit": 10,
-	    "total": 1,
-	    "total_page": 1
-	}
 
 
 ###### Errors
@@ -1394,6 +1311,48 @@ id 값에 해당하는 User 정보 받기
 <br /><br />
 
 
+<a name="article-category-list"></a>
+### ``` GET ``` /articles/categories/{category_id} ``` article::article_category_list```
+
+###### Description
+
+특정 카테고리 글 목록
+
+###### URL Structure
+
+`http://%HOST%/articles/categories/{category_id}`
+
+
+###### Parameters
+
+| Name | Required | Description |
+|---|---|---|
+| **offset** | *Optional* | 자료 수 |
+| **page** | *Optional* | 페이지 번호 |
+| **up** | *Optional* | emotion이 이 값보다 큼 |
+| **down** | *Optional* | emotion이 이 값보다 작음 |
+| **eq** | *Optional* | emotion이 이 값과 동일 |
+
+###### Response
+
+
+###### HTTP Status
+
+* 200
+
+
+###### Errors
+
+| Status | Code | Message |
+|---|---|---|
+
+
+
+###### Notes
+
+
+
+<br /><br />
 
 <a name="hashtag"></a>
 ## 4. Hashtag
