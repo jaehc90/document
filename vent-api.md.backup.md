@@ -1104,7 +1104,6 @@ id 값에 해당하는 User 정보 받기
 | **body** | *Required* | 본문 |
 | **image** | *Optional* | 이미지(아래 color 키값과 함께 사용불가, image 혹은 color 둘중 하나는 필수) |
 | **color** | *Optional* | 32bit-Integer 색상 값(아래 color 키값과 함께 사용불가, image 혹은 color 둘중 하나는 필수) |
-| **emotion** | *Optional* | 32bit-Intenger(특정 emotion 코드 값 emotion 이 0 보다 작으면 down 0보다 크면 업) |
 | **type** | *Optional* | 글 카테고리(기본 0) |
 | **format**| *Optional* | |
 | **tags** | *Optioanl* | 해시태그 (ex: "#태그1 #태그2 무시될값")
@@ -1131,7 +1130,7 @@ id 값에 해당하는 User 정보 받기
 <br /><br />
 
 <a name="article-delete"></a>
-### ``` DELETE ``` /articles/ ``` article::delete_article ```
+### ``` DELETE ``` articles/{id} ``` article::delete_article ```
 
 ###### Description
 
@@ -1194,7 +1193,7 @@ id 값에 해당하는 User 정보 받기
 
 
 <a name="article-post-id-comments"></a>
-### ``` POST ``` /articles/{id}/comments ``` article::post_article ```
+### ``` POST ``` /articles/{id}/comments ``` article::article_comments ```
 
 ###### Description
 
