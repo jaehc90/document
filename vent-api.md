@@ -51,6 +51,8 @@
 	10. [DELETE - users/{id}/subscribe(특정 사용자 구독 취소)](#user-unsubscribe)
 	11. [POST - users/{id}/block(특정 사용자 차단)](#user-block)
 	12. [DELETE - users/{id}/block(특정 사용자 차단 해제)](#user-unblock)
+	13. [GET - users/{id}/comments/articles (특정 사용자 코멘트한 글 목록)] (#view_user_commented_articles)
+	14. [GET - users/me/comments/articles (내가 코멘트한 글 목록)] (#view_me_commented_articles)
 3. [Article](#article)
 	1. [GET - articles/(최신순 글 목록)](#article-get)
 	2. [GET - articles/{id}(특정 글 정보)](#article-get-id)
@@ -63,6 +65,8 @@
 	9. [GET - articles/categories/{id}(특정 카테고리 글 목록)](#article-get-category-list)
 4. [Hashtag](#hashtag)
 	1. [GET - hashtags/(다중 해시태그 검색)](#hashtag-get)
+	1. [GET - hashtags/(다중 해시태그 검색)](#hashtag-get)
+	1. [GET - hashtags/(다중 해시태그 검색)](#hashtag-get)
 	2. [GET - hashtags/{tag}(특정 해시태그의 정보-사용된 글 목록)](#hashtag-get-tag)
 	3. [GET - hashtags/search/{tag}(특정 해시태그와 비슷한 태그를 쓴 글 목록)](#hashtag-search-tag)
 5. [Comment](#comment)
@@ -70,6 +74,7 @@
 	2. [DELETE - comments/{id}(댓글 삭제)](#comment-delete) 
 	3. [POST - comments/{id}/like(댓글 좋아요)](#comment-like)
 	4. [DELETE - comments/{id}/like(댓글 좋아요 취소)](#comment-dislike)
+
 5. [Report](#report)
 	1. [POST - reports/(신고)](#reports)
 	2. [GET - reports/(신고목록)](#reports-list)
@@ -855,8 +860,29 @@ id 값에 해당하는 User 정보 받기
 <br /><br />
 
 
+<a name="user-me-subscribes-categories-list"></a>
+### ``` GET ``` /users/me/subscribes/categories ``` user::view_user_me_subscribe_category_list ```
+
+###### Description
+
+내가 구독하는 카테고리 목록
+
+###### URL Structure
+
+`http://%HOST%/users/me/subscribes/categories`
+
+
+###### Parameters
+
+| Name | Required | Description |
+|---|---|---|
+
+
+<br /><br />
+
+
 <a name="user-subscribes-categories-list"></a>
-### ``` GET ``` /users/{id}/subscribes/categories ``` user::view_user_me_subscribe_category_list ```
+### ``` GET ``` /users/{id}/subscribes/categories ``` user::view_user_subscribe_category_list ```
 
 ###### Description
 
@@ -874,8 +900,6 @@ id 값에 해당하는 User 정보 받기
 
 
 <br /><br />
-
-
 
 <a name="user-subscribe-category"></a>
 ### ``` POST ``` /users/me/subscribes/categories/{category_id} ``` user::subscribe_category ```
@@ -995,9 +1019,48 @@ id 값에 해당하는 User 정보 받기
 
 
 <br /><br />
+
+<a name="user-commented-articles-list"></a>
+### ``` GET ``` /users/me/comments/articles ``` user::view_user_me_commented_articles```
+
+###### Description
+
+내가 코멘트한 글 목록
+
+###### URL Structure
+
+`http://%HOST%/users/{id}/subscribes/categories`
+
+
+###### Parameters
+
+| Name | Required | Description |
+|---|---|---|
+
+
+<br /><br />
+
+<a name="user-commented-articles-list"></a>
+### ``` GET ``` /users/{id}/comments/articles ``` user::view_user_commented_articles```
+
+###### Description
+
+특정 사용자가 코멘트한 글 목록
+
+###### URL Structure
+
+`http://%HOST%/users/{id}/subscribes/categories`
+
+
+###### Parameters
+
+| Name | Required | Description |
+|---|---|---|
+
+
+<br /><br />
+
 <a name="article"></a>
-
-
 ## 3. Article
 
 
