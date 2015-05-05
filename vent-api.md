@@ -41,7 +41,8 @@
 	7. [GET - users/{id}/activites(특정 사용자의 활동 내역)](#user-get-id-activities)
 	8. [GET - users/me/activites(내 활동 내역)](#user-get-id-activities)
 	9. [GET - users/me/subscribes(내가 구독하는 카테고리, 사용자의 게시물)](#user-subscribes)
-	9. [GET - users/me/subscribes/categories(내가 구독하는 카테고리 목록)](#user-subscribes-categories-list)
+	9.1 [GET - users/me/subscribes/categories(내가 구독하는 카테고리 목록)](#user-subscribes-categories-list)
+	9.2 [GET - users/{id}/subscribes/categories(특정사용자가 구독하는 카테고리 목록)](#user-subscribes-categories-list)
 	10. [POST - users/me/subscribes/categories/{category_id}(카테고리 구독)](#user-subscribe-category)
 	11. [DELETE - users/me/subscribes/categories/{category_id}(카테고리 구독 취소)](#user-unsubscribe-category)
 	10. [GET - users/me/subscribes/users(내가 구독하는 사용자 목록)](#user-subscribes-users)
@@ -880,6 +881,26 @@ id 값에 해당하는 User 정보 받기
 
 <br /><br />
 
+<a name="user-me-subscribes-categories-list"></a>
+### ``` GET ``` /users/me/subscribes/categories ``` user::view_user_me_subscribe_category_list ```
+
+###### Description
+
+특정 사용자가 구독하는 카테고리 목록
+
+###### URL Structure
+
+`http://%HOST%/users/me/subscribes/categories`
+
+
+###### Parameters
+
+| Name | Required | Description |
+|---|---|---|
+
+
+<br /><br />
+
 
 <a name="user-subscribes-categories-list"></a>
 ### ``` GET ``` /users/{id}/subscribes/categories ``` user::view_user_subscribe_category_list ```
@@ -1020,7 +1041,7 @@ id 값에 해당하는 User 정보 받기
 
 <br /><br />
 
-<a name="user-commented-articles-list"></a>
+<a name="#view_user_me_commented_articles"></a>
 ### ``` GET ``` /users/me/comments/articles ``` user::view_user_me_commented_articles```
 
 ###### Description
@@ -1029,7 +1050,7 @@ id 값에 해당하는 User 정보 받기
 
 ###### URL Structure
 
-`http://%HOST%/users/{id}/subscribes/categories`
+`http://%HOST%/users/{id}/comments/articles`
 
 
 ###### Parameters
@@ -1037,10 +1058,13 @@ id 값에 해당하는 User 정보 받기
 | Name | Required | Description |
 |---|---|---|
 
+| **offset** | *Optional* | 자료 수 |
+| **page** | *Optional* | 페이지 번호 |
+
 
 <br /><br />
 
-<a name="user-commented-articles-list"></a>
+<a name="#view_user_commented_articles"></a>
 ### ``` GET ``` /users/{id}/comments/articles ``` user::view_user_commented_articles```
 
 ###### Description
@@ -1049,13 +1073,16 @@ id 값에 해당하는 User 정보 받기
 
 ###### URL Structure
 
-`http://%HOST%/users/{id}/subscribes/categories`
+`http://%HOST%/users/{id}/comments/articles`
 
 
 ###### Parameters
 
 | Name | Required | Description |
 |---|---|---|
+
+| **offset** | *Optional* | 자료 수 |
+| **page** | *Optional* | 페이지 번호 |
 
 
 <br /><br />
