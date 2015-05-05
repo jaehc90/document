@@ -1041,7 +1041,7 @@ id 값에 해당하는 User 정보 받기
 
 <br /><br />
 
-<a name="#view_user_me_commented_articles"></a>
+<a name="view_user_me_commented_articles"></a>
 ### ``` GET ``` /users/me/comments/articles ``` user::view_user_me_commented_articles```
 
 ###### Description
@@ -1057,14 +1057,13 @@ id 값에 해당하는 User 정보 받기
 
 | Name | Required | Description |
 |---|---|---|
-
 | **offset** | *Optional* | 자료 수 |
 | **page** | *Optional* | 페이지 번호 |
 
 
 <br /><br />
 
-<a name="#view_user_commented_articles"></a>
+<a name="view_user_commented_articles"></a>
 ### ``` GET ``` /users/{id}/comments/articles ``` user::view_user_commented_articles```
 
 ###### Description
@@ -1080,7 +1079,6 @@ id 값에 해당하는 User 정보 받기
 
 | Name | Required | Description |
 |---|---|---|
-
 | **offset** | *Optional* | 자료 수 |
 | **page** | *Optional* | 페이지 번호 |
 
