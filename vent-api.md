@@ -41,8 +41,7 @@
 	7. [GET - users/{id}/activites(특정 사용자의 활동 내역)](#user-get-id-activities)
 	8. [GET - users/me/activites(내 활동 내역)](#user-get-id-activities)
 	9. [GET - users/me/subscribes(내가 구독하는 카테고리, 사용자의 게시물)](#user-subscribes)
-	9.1 [GET - users/me/subscribes/categories(내가 구독하는 카테고리 목록)](#user-subscribes-categories-list)
-	9.2 [GET - users/{id}/subscribes/categories(특정사용자가 구독하는 카테고리 목록)](#user-subscribes-categories-list)
+	9. [GET - users/me/subscribes/categories(내가 구독하는 카테고리 목록)](#user-subscribes-categories-list)
 	10. [POST - users/me/subscribes/categories/{category_id}(카테고리 구독)](#user-subscribe-category)
 	11. [DELETE - users/me/subscribes/categories/{category_id}(카테고리 구독 취소)](#user-unsubscribe-category)
 	10. [GET - users/me/subscribes/users(내가 구독하는 사용자 목록)](#user-subscribes-users)
@@ -65,11 +64,12 @@
 	8. [DELETE - articles/{id}/like(특정 글에 좋아요 취소)](#article-delete-id-like)
 	9. [GET - articles/categories/{id}(특정 카테고리 글 목록)](#article-get-category-list)
 4. [Hashtag](#hashtag)
-	1. [GET - hashtags/(다중 해시태그 검색)](#hashtag-get)
-	1. [GET - hashtags/(다중 해시태그 검색)](#hashtag-get)
-	1. [GET - hashtags/(다중 해시태그 검색)](#hashtag-get)
-	2. [GET - hashtags/{tag}(특정 해시태그의 정보-사용된 글 목록)](#hashtag-get-tag)
-	3. [GET - hashtags/search/{tag}(특정 해시태그와 비슷한 태그를 쓴 글 목록)](#hashtag-search-tag)
+	1. [GET - hashtags/(해시태그 목록)](#hashtag-get)
+	2. [GET - hashtags/latest(해시태그 목록)](#hashtag-get-latest)
+	3. [GET - hashtags/search(해시태그 검색)](#hashtag-search)
+	4. [GET/POST - hashtags/articles (다중 해시태그 검색)](#hashtag-get-articles)
+	5. [GET - hashtags/articles/{tag}(특정 해시태그의 정보-사용된 글 목록)](#hashtag-get-articles-tag)
+	6. [GET - hashtags/articles/like/{tag}(특정 해시태그와 비슷한 태그를 쓴 글 목록)](#hashtag-articles-like-tag)
 5. [Comment](#comment)
 	1. [GET - comments/{id}(댓글 보기)](#comment-view)
 	2. [DELETE - comments/{id}(댓글 삭제)](#comment-delete) 
@@ -881,26 +881,6 @@ id 값에 해당하는 User 정보 받기
 
 <br /><br />
 
-<a name="user-me-subscribes-categories-list"></a>
-### ``` GET ``` /users/me/subscribes/categories ``` user::view_user_me_subscribe_category_list ```
-
-###### Description
-
-특정 사용자가 구독하는 카테고리 목록
-
-###### URL Structure
-
-`http://%HOST%/users/me/subscribes/categories`
-
-
-###### Parameters
-
-| Name | Required | Description |
-|---|---|---|
-
-
-<br /><br />
-
 
 <a name="user-subscribes-categories-list"></a>
 ### ``` GET ``` /users/{id}/subscribes/categories ``` user::view_user_subscribe_category_list ```
@@ -1041,7 +1021,7 @@ id 값에 해당하는 User 정보 받기
 
 <br /><br />
 
-<a name="view_user_me_commented_articles"></a>
+<a name="user-commented-articles-list"></a>
 ### ``` GET ``` /users/me/comments/articles ``` user::view_user_me_commented_articles```
 
 ###### Description
@@ -1050,20 +1030,18 @@ id 값에 해당하는 User 정보 받기
 
 ###### URL Structure
 
-`http://%HOST%/users/{id}/comments/articles`
+`http://%HOST%/users/{id}/subscribes/categories`
 
 
 ###### Parameters
 
 | Name | Required | Description |
 |---|---|---|
-| **offset** | *Optional* | 자료 수 |
-| **page** | *Optional* | 페이지 번호 |
 
 
 <br /><br />
 
-<a name="view_user_commented_articles"></a>
+<a name="user-commented-articles-list"></a>
 ### ``` GET ``` /users/{id}/comments/articles ``` user::view_user_commented_articles```
 
 ###### Description
@@ -1072,15 +1050,13 @@ id 값에 해당하는 User 정보 받기
 
 ###### URL Structure
 
-`http://%HOST%/users/{id}/comments/articles`
+`http://%HOST%/users/{id}/subscribes/categories`
 
 
 ###### Parameters
 
 | Name | Required | Description |
 |---|---|---|
-| **offset** | *Optional* | 자료 수 |
-| **page** | *Optional* | 페이지 번호 |
 
 
 <br /><br />
@@ -1452,7 +1428,7 @@ id 값에 해당하는 User 정보 받기
 
 ###### Description
 
-다중 해시태그 검색
+해시태그 목록
 
 ###### URL Structure
 
@@ -1471,8 +1447,81 @@ id 값에 해당하는 User 정보 받기
 <br /><br />
 
 
-<a name="hashtag-get-tag"></a>
-### ``` GET ``` /hashtags/{tag} ``` hashtag::list_hashtag_articles ```
+
+<a name="hashtag-get-lateset"></a>
+### ``` GET ``` /hashtags ``` hashtag::hashtag_root ```
+
+###### Description
+
+최근 시태그 목록
+
+###### URL Structure
+
+`http://%HOST%/hashtags`
+
+
+###### Parameters
+
+| Name | Required | Description |
+|---|---|---|
+| **offset** | *Optional* | 자료 수 |
+| **page** | *Optional* | 페이지 번호 |
+| **tag** | *Required* | 해시태그, 같은 키 값으로 중복해서 추가 |
+
+###### Response
+<br /><br />
+
+
+
+<a name="hashtag-search"></a>
+### ``` GET ``` /hashtags/search ``` hashtag::hashtag_root ```
+
+###### Description
+
+해시태그 검색
+
+###### URL Structure
+
+`http://%HOST%/hashtags`
+
+
+###### Parameters
+
+| Name | Required | Description |
+|---|---|---|
+| **offset** | *Optional* | 자료 수 |
+| **page** | *Optional* | 페이지 번호 |
+| **tag** | *Required* | 해시태그 |
+
+###### Response
+<br /><br />
+
+<a name="hashtag-get-articles"></a>
+### ``` POST ``` /hashtags/artilces/ ``` hashtag::hashtag_root ```
+
+###### Description
+
+해시태그 검색
+
+###### URL Structure
+
+`http://%HOST%/hashtags`
+
+
+###### Parameters
+
+| Name | Required | Description |
+|---|---|---|
+| **offset** | *Optional* | 자료 수 |
+| **page** | *Optional* | 페이지 번호 |
+| **tag** | *Required* | 해시태그, 같은 키 값으로 중복해서 추가 |
+
+###### Response
+<br /><br />
+
+
+<a name="hashtag-get-articles-tag"></a>
+### ``` GET ``` /hashtags/articles/{tag} ``` hashtag::list_hashtag_articles ```
 
 ###### Description
 
@@ -1497,8 +1546,8 @@ id 값에 해당하는 User 정보 받기
 <br /><br />
 
 
-<a name="hashtag-search-tag"></a>
-### ``` GET ``` /hashtags/search/{tag} ``` hashtag::search_hashtag ```
+<a name="hashtag-articles-like-tag"></a>
+### ``` GET ``` /hashtags/articles/search/{tag} ``` hashtag::search_hashtag ```
 
 ###### Description
 
